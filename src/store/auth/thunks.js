@@ -1,4 +1,6 @@
 import {
+  loginWithEmailPassword,
+  logoutFirebase,
   registerUserWithEmailPassword,
   sighInWithGoogle,
 } from '../../firebase/providers';
@@ -69,5 +71,33 @@ export const startCreatingUserWithEmailPassword = ({
     if (!ok) return dispatch(logout({ errorMessage }));
 
     dispatch(login({ uid, displayName, email, photoURL }));
+  };
+};
+
+/**
+ * This is a function that logs in a user with their email and password and dispatches actions based on
+ * the success or failure of the login attempt.
+ * @returns A function that takes an object with email and password properties as arguments, and
+ * returns an asynchronous function that dispatches actions to check the credentials, login the user
+ * with the provided email and password, and logout the user if the login fails. If the login is
+ * successful, it dispatches an action to login the user with the retrieved user information.
+ */
+export const startLoginWithEmailPassword = ({ email, password }) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const { ok, uid, photoURL, errorMessage, displayName } =
+      await loginWithEmailPassword({ email, password });
+
+    if (!ok) return dispatch(logout({ errorMessage }));
+
+    dispatch(login({ uid, displayName, email, photoURL }));
+  };
+};
+
+export const startLogout = () => {
+  return async (dispatch) => {
+    await logoutFirebase();
+    dispatch(logout({}));
   };
 };

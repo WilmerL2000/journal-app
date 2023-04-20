@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { firebaseAuth } from './config';
 
@@ -69,4 +70,31 @@ export const registerUserWithEmailPassword = async ({
     const errorMessage = error.message;
     return { ok: false, errorMessage };
   }
+};
+
+/**
+ * This is a function that logs in a user with their email and password using Firebase authentication
+ * and returns their user information or an error message.
+ * @returns The function `loginWithEmailPassword` returns an object with either a `ok` property set to
+ * `true` and the user's `uid`, `photoURL`, `email`, and `displayName` properties, or a `ok` property
+ * set to `false` and an `errorMessage` property set to `'Correo o contraseña incorrectas'` (which
+ * means "incorrect email or password" in Spanish
+ */
+export const loginWithEmailPassword = async ({ email, password }) => {
+  try {
+    const resp = await signInWithEmailAndPassword(
+      firebaseAuth,
+      email,
+      password
+    );
+    const { uid, photoURL, displayName } = resp.user;
+
+    return { ok: true, uid, photoURL, displayName };
+  } catch (error) {
+    return { ok: false, errorMessage: 'Correo o contraseña incorrectas' };
+  }
+};
+
+export const logoutFirebase = async () => {
+  return await firebaseAuth.signOut();
 };
