@@ -4,6 +4,7 @@ import {
   registerUserWithEmailPassword,
   sighInWithGoogle,
 } from '../../firebase/providers';
+import { clearNotesLogout } from '../journal';
 import { checkingCredentials, login, logout } from './';
 
 //Redux - Thunk: Allows you to return and perform different asynchronous functions at the same time
@@ -95,9 +96,16 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
   };
 };
 
+/**
+ * This function logs out a user from Firebase and dispatches a logout action.
+ * @returns The function `startLogout` is returning an asynchronous function that takes a `dispatch`
+ * parameter. This function calls the `logoutFirebase` function and waits for it to complete using the
+ * `await` keyword. Then it dispatches the `logout` action with an empty object as its payload.
+ */
 export const startLogout = () => {
   return async (dispatch) => {
     await logoutFirebase();
+    dispatch(clearNotesLogout());
     dispatch(logout({}));
   };
 };

@@ -17,21 +17,30 @@ import {
 } from '../../store/auth';
 import { useMemo } from 'react';
 
+const formData = {
+  email: '',
+  password: '',
+};
+
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const { status, errorMessage } = useSelector((state) => state.auth);
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
-  const { email, password, onInputChange, formState } = useForm({
-    email: '',
-    password: '',
-  });
+  const { email, password, onInputChange, formState } = useForm(formData);
 
+  /**
+   * The function onSubmit prevents the default form submission behavior and dispatches a login action
+   * with email and password data.
+   */
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(startLoginWithEmailPassword(formState));
   };
 
+  /**
+   * The function "onGoogleSignIn" dispatches a "startGoogleSignIn" action.
+   */
   const onGoogleSignIn = () => {
     dispatch(startGoogleSignIn());
   };

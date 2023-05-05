@@ -8,6 +8,10 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     createValidators();
   }, [formState]);
 
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm]);
+
   /* Checks if all the form fields are valid based on the validation rules provided in the `formValidations` object. 
   It does this by iterating over the `formValidation` object and checking if any of the values are not null. 
   The `useMemo` hook is used to memoize the value so that it only recomputes when the `formState` changes. */
