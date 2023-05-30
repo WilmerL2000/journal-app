@@ -5,11 +5,15 @@ const initialState = {
   messageSaved: '',
   notes: [],
   active: null,
+  showMenu: false,
 };
 export const journalSlice = createSlice({
   name: 'journal',
   initialState,
   reducers: {
+    setMenu: (state) => {
+      state.showMenu = !state.showMenu;
+    },
     savingNewNote: (state) => {
       state.isSaving = true;
     },
@@ -55,6 +59,7 @@ export const journalSlice = createSlice({
   },
 });
 export const {
+  setMenu,
   savingNewNote,
   addNewEmptyNote,
   setActiveNote,

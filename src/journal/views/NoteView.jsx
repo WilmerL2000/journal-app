@@ -3,9 +3,19 @@ import {
   SaveOutlined,
   UploadOutlined,
 } from '@mui/icons-material';
-import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
+import {
+  Button,
+  Grid,
+  IconButton,
+  TextField,
+  Tooltip,
+  Typography,
+  Zoom,
+} from '@mui/material';
 import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 import { useForm } from '../../hooks';
 import {
   setActiveNote,
@@ -14,8 +24,6 @@ import {
   startUploadingFiles,
 } from '../../store/journal';
 import { ImageGallery } from '../components';
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.css';
 
 export const NoteView = () => {
   const {
@@ -28,7 +36,9 @@ export const NoteView = () => {
 
   const dateString = useMemo(() => {
     const newDate = new Date(date);
-    return newDate.toUTCString();
+    return new Intl.DateTimeFormat('es-CR', { dateStyle: 'long' }).format(
+      newDate
+    );
   }, [date]);
 
   const fileInputRef = useRef();
@@ -37,6 +47,9 @@ export const NoteView = () => {
     dispatch(setActiveNote(formState));
   }, [formState]);
 
+  /**
+   * This function dispatches an action to start saving a note.
+   */
   const onSaveNote = () => {
     dispatch(startSaveNote());
   };
@@ -85,14 +98,15 @@ export const NoteView = () => {
           onChange={onFileInputChange}
           style={{ display: 'none' }}
         />
-
-        <IconButton
-          color="primary"
-          disabled={isSaving}
-          onClick={() => fileInputRef.current.click()}
-        >
-          <UploadOutlined />
-        </IconButton>
+        <Tooltip title="Subir imágenes" TransitionComponent={Zoom}>
+          <IconButton
+            color="primary"
+            disabled={isSaving}
+            onClick={() => fileInputRef.current.click()}
+          >
+            <UploadOutlined />
+          </IconButton>
+        </Tooltip>
         <Button
           disabled={isSaving}
           onClick={onSaveNote}
@@ -129,9 +143,11 @@ export const NoteView = () => {
         />
       </Grid>
       <Grid container justifyContent="end">
-        <Button onClick={onDelete} sx={{ mt: 2 }} color="error">
-          <DeleteOutline />
-        </Button>
+        <Tooltip title="Eliminar nota" TransitionComponent={Zoom}>
+          <Button onClick={onDelete} sx={{ mt: 2 }} color="error">
+            <DeleteOutline />
+          </Button>
+        </Tooltip>
       </Grid>
       <ImageGallery images={note.imageUrls} />
     </Grid>

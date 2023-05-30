@@ -5,16 +5,19 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useMediaQuery,
 } from '@mui/material';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { setActiveNote } from '../../store/journal';
+import { setActiveNote, setMenu } from '../../store/journal';
 
 export const SideBarItem = ({ title, body, id, date, imageUrls = [] }) => {
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery('(max-width:600px)');
 
   const onClickNote = () => {
     dispatch(setActiveNote({ id, title, body, date, imageUrls }));
+    if (isMobile) dispatch(setMenu());
   };
 
   const newTitle = useMemo(() => {
