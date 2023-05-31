@@ -62,7 +62,7 @@ Project developed using the Vite environment using the React template, implement
 ### Features
 
 - Sign in with Google account.
-- Create an account.
+- Create an account and log in with the created account.
 - Create, modify, list and delete a note.
 - Upload images to each note.
 
