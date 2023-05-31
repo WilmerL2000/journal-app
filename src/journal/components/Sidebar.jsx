@@ -44,25 +44,19 @@ export const Sidebar = ({ drawerWidth = 240 }) => {
             justifyContent={!isMobile ? 'space-around' : 'space-between'}
             alignItems="center"
           >
-            <Avatar
-              src={`${photoURL}`}
-              alt="Imagen de la nota"
-              loading="lazy"
-              sx={{ width: 56, height: 56 }}
-            />
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: !isMobile ? 'block' : 'none' }}
+              sx={{ fontSize: !isMobile ? '15px' : '14px' }}
             >
-              {displayName.split(' ')[0].toUpperCase()}
+              {displayName.toUpperCase()}
             </Typography>
           </Grid>
           <IconButton
             color="inherit"
             edge="start"
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ ml: 1, display: { sm: 'none' } }}
             onClick={() => dispatch(setMenu())}
           >
             <CloseOutlined sx={{ fontSize: 30 }} />
