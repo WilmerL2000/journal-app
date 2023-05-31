@@ -45,14 +45,14 @@
 
 ## About The Project
 
-Project developed using the Vite environment using the React template, implementing Material UI, Redux and Firebase. Allows the user to keep a certain diary by creating notes
+Project developed using the Vite environment using the React template, implementing Material UI, Redux and Firebase. Allows the user to keep a certain diary by creating notes.
 
 ### Features
 
 - Sign in with Google account.
-- Create an account
-- Create, modify, list and delete a note
-- Upload images to each note
+- Create an account.
+- Create, modify, list and delete a note.
+- Upload images to each note.
 
 ### Tech Stack
 
