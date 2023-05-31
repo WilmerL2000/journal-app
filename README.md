@@ -9,6 +9,18 @@
     <a href="https://github.com/WilmerL2000/journal-app/tree/testing" target="_blank">Testing branch</a>
 </div>
 
+## Test User
+
+- Email:
+  ```
+   test@gmail.com
+  ```
+- Password:
+  ```
+   Test123
+  ```
+  <br/>
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>
@@ -69,9 +81,18 @@ Project developed using the Vite environment using the React template, implement
           <img src="https://res.cloudinary.com/wils09/image/upload/v1682487163/GitHub/assets/react_original_logo_icon_146374_whazfv.png" width="48" height="48" alt="React" />
         <br><strong>React</strong>        
       </td>      
+       <td align="center" width="96">
+          <img src="https://res.cloudinary.com/wils09/image/upload/v1685557673/GitHub/assets/react-router_kpwvqc.png" width="48" height="48" alt="React Router Dom" />
+        <br><strong>React Router Dom</strong>        
+      </td> 
         <td align="center" width="96">
           <img src="https://res.cloudinary.com/wils09/image/upload/v1682487162/GitHub/assets/redux_original_logo_icon_146365_kycmj9.png" width="48" height="48" alt="Redux" />
         <br><strong>Redux</strong>        
+      </td> 
+      </td>      
+        <td align="center" width="96">
+          <img src="https://res.cloudinary.com/wils09/image/upload/v1682487162/GitHub/assets/redux_original_logo_icon_146365_kycmj9.png" width="48" height="48" alt="Redux Toolkit" />
+        <br><strong>Redux Toolkit</strong>        
       </td> 
       <td align="center" width="96">
           <img src="https://res.cloudinary.com/wils09/image/upload/v1682487162/GitHub/assets/material_ui_jqpugk.png" width="48" height="48" alt="Material UI" />
@@ -97,8 +118,14 @@ Project developed using the Vite environment using the React template, implement
         <br>18.2.0
       </td>     
       <td align="center" width="96">
+        <br>6.10.0
+      </td>     
+      <td align="center" width="96">
         <br>8.0.5
       </td>     
+      <td align="center" width="96">
+        <br>1.9.3
+      </td>         
       <td align="center" width="96">
         <br>5.11.15
       </td>     
