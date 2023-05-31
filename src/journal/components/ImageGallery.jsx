@@ -6,8 +6,8 @@ export const ImageGallery = ({ images = [] }) => {
   return (
     <ImageList
       sx={{ width: '100%', height: '100%' }}
-      cols={isMobile ? 2 : 4}
-      rowHeight={200}
+      cols={isMobile ? 1 : 6}
+      rowHeight="auto"
     >
       {images.map((image) => (
         <ImageListItem key={image}>
